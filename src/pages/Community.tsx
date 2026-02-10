@@ -41,7 +41,7 @@ const posts = [
     id: "4",
     user: { name: "Maya Santos", avatar: "🔥", level: "Expert" },
     tag: "Tips",
-    content: "Pro tip: Your wrist conditioning routine is just as important as your strength training. Spend 5 minutes daily doing wrist circles, flexor stretches, and supported wrist push-ups. Your future handstand self will thank you.",
+    content: "Pro tip: Your wrist conditioning routine is just as important as your strength training. Spend 5 minutes daily doing wrist circles, flexor stretches, and supported wrist push-ups.",
     image: null,
     likes: 156,
     comments: 31,
@@ -69,7 +69,7 @@ export default function Community() {
           <button
             key={tag}
             onClick={() => setActiveTag(tag)}
-            className={`px-3 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap flex-shrink-0 transition-colors ${
+            className={`px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap flex-shrink-0 transition-colors ${
               activeTag === tag ? "bg-primary text-primary-foreground" : "bg-card card-shadow text-muted-foreground"
             }`}
           >
@@ -91,7 +91,7 @@ export default function Community() {
             <div className="p-4">
               {/* Header */}
               <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2.5">
                   <div className="w-9 h-9 rounded-full bg-muted flex items-center justify-center text-lg">
                     {post.user.avatar}
                   </div>
