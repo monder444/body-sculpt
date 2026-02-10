@@ -1,16 +1,15 @@
 import { motion } from "framer-motion";
-import { Play, Crown, ArrowRight, Search, Flame } from "lucide-react";
+import { Play, Crown, ArrowRight, Search, Flame, Activity, Dumbbell, Sparkles } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { workouts } from "@/data/workouts";
 import { exercises } from "@/data/exercises";
 import { WorkoutCard } from "@/components/WorkoutCard";
 import heroImg from "@/assets/hero-home.jpg";
 
-const quickFilters = [
-  { label: "Strength", emoji: "💪" },
-  { label: "Skills", emoji: "🤸" },
-  { label: "Endurance", emoji: "🔥" },
-  { label: "Mobility", emoji: "🧘" },
+const activityCards = [
+  { label: "Strength", icon: Dumbbell, value: "12", unit: "sessions" },
+  { label: "Mobility", icon: Activity, value: "8", unit: "sessions" },
+  { label: "Skills", icon: Sparkles, value: "5", unit: "sessions" },
 ];
 
 export default function Home() {
@@ -20,59 +19,79 @@ export default function Home() {
 
   return (
     <div className="pb-4">
-      {/* Hero */}
-      <div className="relative h-[55vh] min-h-[380px] overflow-hidden">
-        <img src={heroImg} alt="Calisthenics athlete" className="absolute inset-0 w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
-        <div className="absolute top-0 left-0 right-0 safe-top px-5 pt-4 flex items-center justify-between">
-          <div>
-            <p className="text-sm text-muted-foreground">Hey, Athlete 👋</p>
-            <h1 className="text-2xl font-display font-bold mt-0.5">Ready to train?</h1>
+      {/* Header */}
+      <div className="px-5 pt-6 safe-top flex items-center justify-between">
+        <div className="flex items-center gap-3">
+          <div className="w-12 h-12 rounded-full overflow-hidden ring-2 ring-primary ring-offset-2 ring-offset-background">
+            <img src={heroImg} alt="Avatar" className="w-full h-full object-cover" />
           </div>
-          <button
-            onClick={() => navigate("/workouts")}
-            className="w-10 h-10 rounded-full bg-card/80 glass flex items-center justify-center"
-          >
-            <Search className="w-5 h-5" />
-          </button>
+          <div>
+            <h1 className="text-xl font-display font-bold">Hello Cristina,</h1>
+            <p className="text-xs text-muted-foreground">Performance 70%</p>
+          </div>
         </div>
-        <div className="absolute bottom-4 left-0 right-0 px-5">
-          <motion.div
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.2 }}
-            className="bg-card/90 glass rounded-2xl p-4 card-shadow"
-          >
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-[10px] uppercase tracking-wider text-primary font-semibold">Continue workout</p>
-                <h3 className="font-display font-bold mt-0.5">Pull Day</h3>
-                <p className="text-xs text-muted-foreground mt-0.5">3 of 6 exercises done</p>
-              </div>
-              <button className="w-12 h-12 rounded-full bg-primary flex items-center justify-center">
-                <Play className="w-5 h-5 text-primary-foreground ml-0.5" />
-              </button>
-            </div>
-            <div className="mt-3 h-1.5 bg-muted rounded-full overflow-hidden">
-              <div className="h-full w-1/2 bg-primary rounded-full" />
-            </div>
-          </motion.div>
-        </div>
+        <button
+          onClick={() => navigate("/workouts")}
+          className="w-10 h-10 rounded-full bg-card card-shadow flex items-center justify-center"
+        >
+          <Search className="w-5 h-5 text-muted-foreground" />
+        </button>
       </div>
 
-      <div className="px-5 space-y-6 mt-4">
-        {/* Quick Filters */}
-        <div className="flex gap-2 overflow-x-auto no-scrollbar">
-          {quickFilters.map((f) => (
+      <div className="px-5 space-y-6 mt-6">
+        {/* Activity Analytics */}
+        <section>
+          <div className="flex items-center justify-between mb-3">
+            <h2 className="text-sm font-display font-bold text-muted-foreground uppercase tracking-wider">Activity Analytics</h2>
+            <button className="text-xs text-primary font-semibold">See all</button>
+          </div>
+          <div className="grid grid-cols-3 gap-3">
+            {activityCards.map((card, i) => (
+              <motion.div
+                key={card.label}
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.08 }}
+                className="p-4 rounded-2xl bg-card card-shadow flex flex-col items-center gap-2 group hover:bg-primary/10 transition-colors"
+              >
+                <div className="w-10 h-10 rounded-xl bg-primary/15 flex items-center justify-center">
+                  <card.icon className="w-5 h-5 text-primary" />
+                </div>
+                <span className="text-[11px] font-semibold text-muted-foreground">{card.label}</span>
+              </motion.div>
+            ))}
+          </div>
+        </section>
+
+        {/* Continue Workout */}
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.15 }}
+          className="relative overflow-hidden rounded-2xl"
+        >
+          <img src={heroImg} alt="Continue workout" className="absolute inset-0 w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-r from-foreground/80 via-foreground/60 to-foreground/30" />
+          <div className="relative p-5 flex items-center justify-between min-h-[140px]">
+            <div>
+              <div className="flex items-center gap-2 text-[10px] text-primary font-semibold uppercase tracking-wider">
+                <Flame className="w-3 h-3" /> Fitness Session
+              </div>
+              <h3 className="font-display font-bold text-xl text-card mt-1">Pull Day</h3>
+              <p className="text-xs text-card/60 mt-0.5">Workout Sessions</p>
+              <div className="flex items-center gap-3 mt-2 text-[10px] text-card/70">
+                <span>🕐 1.5 Hours</span>
+                <span>🔥 550 Kcal</span>
+              </div>
+            </div>
             <button
-              key={f.label}
-              className="flex items-center gap-1.5 px-4 py-2 rounded-full bg-card card-shadow text-sm font-medium whitespace-nowrap flex-shrink-0 hover:bg-primary hover:text-primary-foreground transition-colors"
+              onClick={() => navigate("/workouts/push-pull-legs-pull")}
+              className="px-4 py-2 rounded-full bg-primary text-primary-foreground text-xs font-bold"
             >
-              <span>{f.emoji}</span>
-              {f.label}
+              See Stat
             </button>
-          ))}
-        </div>
+          </div>
+        </motion.div>
 
         {/* Featured Workouts */}
         <section>

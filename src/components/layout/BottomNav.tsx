@@ -20,7 +20,7 @@ export function BottomNav() {
   };
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 z-50 glass border-t border-border/50">
+    <nav className="fixed bottom-0 left-0 right-0 z-50 bg-card/95 backdrop-blur-xl border-t border-border/40">
       <div className="flex items-center justify-around px-2 pb-[env(safe-area-inset-bottom,8px)] pt-2 max-w-lg mx-auto">
         {tabs.map((tab) => {
           const active = isActive(tab.path);
@@ -33,7 +33,7 @@ export function BottomNav() {
               {active && (
                 <motion.div
                   layoutId="tab-indicator"
-                  className="absolute -top-1 w-6 h-1 rounded-full bg-primary"
+                  className="absolute -top-1 w-8 h-1 rounded-full bg-primary"
                   transition={{ type: "spring", stiffness: 500, damping: 30 }}
                 />
               )}
@@ -41,7 +41,7 @@ export function BottomNav() {
                 className={`w-5 h-5 transition-colors ${active ? "text-primary" : "text-muted-foreground"}`}
               />
               <span
-                className={`text-[10px] font-medium transition-colors ${active ? "text-primary" : "text-muted-foreground"}`}
+                className={`text-[10px] font-medium transition-colors ${active ? "text-foreground" : "text-muted-foreground"}`}
               >
                 {tab.label}
               </span>

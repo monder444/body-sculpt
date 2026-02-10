@@ -1,4 +1,4 @@
-import { Settings, ChevronRight, Crown, Moon, Sun, LogOut, HelpCircle, Shield, Mail } from "lucide-react";
+import { Settings, ChevronRight, Crown, Moon, LogOut, HelpCircle, Shield, Mail } from "lucide-react";
 import { motion } from "framer-motion";
 import imgHero from "@/assets/hero-home.jpg";
 
@@ -23,7 +23,7 @@ export default function Profile() {
       <div className="flex items-center justify-between">
         <h1 className="text-2xl font-display font-bold">Profile</h1>
         <button className="w-10 h-10 rounded-full bg-card card-shadow flex items-center justify-center">
-          <Settings className="w-5 h-5" />
+          <Settings className="w-5 h-5 text-muted-foreground" />
         </button>
       </div>
 
@@ -48,7 +48,7 @@ export default function Profile() {
 
         <div className="grid grid-cols-3 gap-3 mt-4">
           {stats.map((s) => (
-            <div key={s.label} className="text-center p-2 rounded-xl bg-muted/50">
+            <div key={s.label} className="text-center p-2.5 rounded-xl bg-muted/50">
               <p className="font-display font-bold">{s.value}</p>
               <p className="text-[10px] text-muted-foreground">{s.label}</p>
             </div>
@@ -69,7 +69,7 @@ export default function Profile() {
           ].map((a) => (
             <div
               key={a.title}
-              className={`flex-shrink-0 w-20 text-center p-3 rounded-xl ${a.earned ? "bg-card card-shadow" : "bg-muted/50 opacity-50"}`}
+              className={`flex-shrink-0 w-20 text-center p-3 rounded-2xl ${a.earned ? "bg-card card-shadow" : "bg-muted/50 opacity-40"}`}
             >
               <span className="text-2xl">{a.emoji}</span>
               <p className="text-[10px] font-medium mt-1 leading-tight">{a.title}</p>
@@ -88,7 +88,7 @@ export default function Profile() {
             transition={{ delay: i * 0.04 }}
             className="w-full flex items-center gap-3 p-3 rounded-xl hover:bg-muted/50 transition-colors text-left group"
           >
-            <div className={`w-9 h-9 rounded-lg flex items-center justify-center ${item.accent ? "bg-primary/20" : "bg-muted"}`}>
+            <div className={`w-9 h-9 rounded-xl flex items-center justify-center ${item.accent ? "bg-primary/15" : "bg-muted"}`}>
               <item.icon className={`w-4 h-4 ${item.accent ? "text-primary" : "text-muted-foreground"}`} />
             </div>
             <div className="flex-1">
