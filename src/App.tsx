@@ -9,6 +9,7 @@ import Workouts from "./pages/Workouts";
 import WorkoutDetail from "./pages/WorkoutDetail";
 import ExerciseDetail from "./pages/ExerciseDetail";
 import Plans from "./pages/Plans";
+import CreatePlan from "./pages/CreatePlan";
 import Community from "./pages/Community";
 import Profile from "./pages/Profile";
 import NotFound from "./pages/NotFound";
@@ -28,6 +29,7 @@ const App = () => (
             <Route path="/workouts/:id" element={<WorkoutDetail />} />
             <Route path="/exercise/:slug" element={<ExerciseDetail />} />
             <Route path="/plans" element={<Plans />} />
+            <Route path="/plans/create" element={<CreatePlan />} />
             <Route path="/community" element={<Community />} />
             <Route path="/profile" element={<Profile />} />
           </Route>
