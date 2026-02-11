@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Plus, Calendar, Trophy, Flame, ChevronRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { programs } from "@/data/workouts";
@@ -7,13 +8,14 @@ const weekDays = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 const mockCompletedDays = [true, false, true, true, false, false, false];
 
 export default function Plans() {
+  const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState<"my-plans" | "programs">("my-plans");
 
   return (
     <div className="px-5 pt-6 safe-top">
       <div className="flex items-center justify-between">
         <h1 className="text-2xl font-display font-bold">Plans</h1>
-        <button className="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
+        <button onClick={() => navigate("/plans/create")} className="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
           <Plus className="w-5 h-5 text-primary-foreground" />
         </button>
       </div>
@@ -81,7 +83,7 @@ export default function Plans() {
             <Plus className="w-8 h-8 mx-auto text-muted-foreground mb-2" />
             <h3 className="font-display font-bold">Create Your First Plan</h3>
             <p className="text-xs text-muted-foreground mt-1">Build a custom workout schedule tailored to your goals</p>
-            <button className="mt-3 px-5 py-2.5 rounded-full bg-primary text-primary-foreground text-sm font-semibold">
+            <button onClick={() => navigate("/plans/create")} className="mt-3 px-5 py-2.5 rounded-full bg-primary text-primary-foreground text-sm font-semibold">
               Get Started
             </button>
           </div>
