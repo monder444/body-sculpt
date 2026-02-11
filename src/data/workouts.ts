@@ -22,7 +22,7 @@ export const workouts: Workout[] = [
     calories: '200-280',
     muscles: ['chest', 'back', 'core', 'legs'],
     exerciseCount: 6,
-    imageUrl: '/workout-core.jpg',
+    imageUrl: '/workout-fullbody.jpg',
     description: 'Perfect starting point for calisthenics beginners. Learn the fundamentals.',
     featured: true,
   },
@@ -35,7 +35,7 @@ export const workouts: Workout[] = [
     calories: '300-380',
     muscles: ['chest', 'shoulders', 'arms'],
     exerciseCount: 7,
-    imageUrl: '/workout-dips.jpg',
+    imageUrl: '/workout-push.jpg',
     description: 'Push-focused workout targeting chest, shoulders, and triceps.',
   },
   {
@@ -109,7 +109,7 @@ export const workouts: Workout[] = [
     calories: '350-450',
     muscles: ['full-body'],
     exerciseCount: 6,
-    imageUrl: '/workout-handstand.jpg',
+    imageUrl: '/workout-skills.jpg',
     description: 'Practice advanced skills: muscle-ups, levers, handstands.',
   },
   {
@@ -121,7 +121,7 @@ export const workouts: Workout[] = [
     calories: '100-150',
     muscles: ['full-body'],
     exerciseCount: 8,
-    imageUrl: '/workout-legs.jpg',
+    imageUrl: '/workout-mobility.jpg',
     description: 'Improve flexibility and joint health with dynamic stretching.',
   },
   {
@@ -133,7 +133,7 @@ export const workouts: Workout[] = [
     calories: '320-420',
     muscles: ['chest', 'back', 'shoulders', 'arms'],
     exerciseCount: 8,
-    imageUrl: '/workout-dips.jpg',
+    imageUrl: '/workout-upperbody.jpg',
     description: 'High-intensity upper body session for strength gains.',
   },
   {
@@ -145,7 +145,7 @@ export const workouts: Workout[] = [
     calories: '350-450',
     muscles: ['full-body'],
     exerciseCount: 10,
-    imageUrl: '/workout-core.jpg',
+    imageUrl: '/workout-endurance.jpg',
     description: 'High-rep, minimal-rest circuit for cardiovascular endurance.',
   },
   {
@@ -157,7 +157,7 @@ export const workouts: Workout[] = [
     calories: '400-500',
     muscles: ['chest', 'back', 'shoulders', 'core'],
     exerciseCount: 7,
-    imageUrl: '/workout-dips.jpg',
+    imageUrl: '/workout-rings.jpg',
     description: 'Advanced ring training for gymnastic-level strength.',
   },
 ];
