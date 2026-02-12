@@ -1,5 +1,6 @@
 import { Settings, ChevronRight, Crown, Moon, LogOut, HelpCircle, Shield, Mail } from "lucide-react";
 import { motion } from "framer-motion";
+import { toast } from "sonner";
 import imgHero from "@/assets/hero-home.jpg";
 
 const stats = [
@@ -9,12 +10,12 @@ const stats = [
 ];
 
 const menuItems = [
-  { icon: Crown, label: "Go Premium", subtitle: "Unlock advanced features", accent: true },
-  { icon: Settings, label: "Preferences", subtitle: "Level, goals, equipment" },
-  { icon: Moon, label: "Appearance", subtitle: "Light / Dark / System" },
-  { icon: HelpCircle, label: "Help & FAQ", subtitle: "Get support" },
-  { icon: Shield, label: "Privacy & Terms", subtitle: "Legal information" },
-  { icon: Mail, label: "Contact Us", subtitle: "Send feedback" },
+  { icon: Crown, label: "Go Premium", subtitle: "Unlock advanced features", accent: true, action: () => toast("Premium coming soon! 🚀") },
+  { icon: Settings, label: "Preferences", subtitle: "Level, goals, equipment", action: () => toast("Preferences coming soon ⚙️") },
+  { icon: Moon, label: "Appearance", subtitle: "Light / Dark / System", action: () => { document.documentElement.classList.toggle("dark"); toast("Theme toggled 🌓"); } },
+  { icon: HelpCircle, label: "Help & FAQ", subtitle: "Get support", action: () => toast("Help center coming soon 📖") },
+  { icon: Shield, label: "Privacy & Terms", subtitle: "Legal information", action: () => toast("Privacy & Terms coming soon 🔒") },
+  { icon: Mail, label: "Contact Us", subtitle: "Send feedback", action: () => toast("Contact form coming soon ✉️") },
 ];
 
 export default function Profile() {
@@ -86,6 +87,7 @@ export default function Profile() {
             initial={{ opacity: 0, x: -8 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: i * 0.04 }}
+            onClick={item.action}
             className="w-full flex items-center gap-3 p-3 rounded-xl hover:bg-muted/50 transition-colors text-left group"
           >
             <div className={`w-9 h-9 rounded-xl flex items-center justify-center ${item.accent ? "bg-primary/15" : "bg-muted"}`}>
@@ -101,7 +103,7 @@ export default function Profile() {
       </section>
 
       {/* Logout */}
-      <button className="w-full flex items-center justify-center gap-2 mt-6 py-3 text-destructive text-sm font-semibold">
+      <button onClick={() => toast("Logged out successfully 👋")} className="w-full flex items-center justify-center gap-2 mt-6 py-3 text-destructive text-sm font-semibold">
         <LogOut className="w-4 h-4" /> Log Out
       </button>
     </div>
