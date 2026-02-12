@@ -1,5 +1,6 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { ArrowLeft, Clock, Zap, Play, Heart, Share2 } from "lucide-react";
+import { toast } from "sonner";
 import { motion } from "framer-motion";
 import { workouts } from "@/data/workouts";
 import { exercises } from "@/data/exercises";
@@ -86,6 +87,7 @@ export default function WorkoutDetail() {
         {/* Start Button */}
         <motion.button
           whileTap={{ scale: 0.97 }}
+          onClick={() => toast.success(`${workout.title} started! Let's go! 💪`)}
           className="w-full py-4 rounded-2xl bg-primary text-primary-foreground font-display font-bold text-lg flex items-center justify-center gap-2"
         >
           <Play className="w-5 h-5" /> Start Workout
