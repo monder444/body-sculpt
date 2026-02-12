@@ -7,9 +7,9 @@ import { WorkoutCard } from "@/components/WorkoutCard";
 import heroImg from "@/assets/hero-home.jpg";
 
 const activityCards = [
-  { label: "Strength", icon: Dumbbell, value: "12", unit: "sessions" },
-  { label: "Mobility", icon: Activity, value: "8", unit: "sessions" },
-  { label: "Skills", icon: Sparkles, value: "5", unit: "sessions" },
+  { label: "Strength", icon: Dumbbell, value: "12", unit: "sessions", filter: "strength" },
+  { label: "Mobility", icon: Activity, value: "8", unit: "sessions", filter: "mobility" },
+  { label: "Skills", icon: Sparkles, value: "5", unit: "sessions", filter: "skills" },
 ];
 
 export default function Home() {
@@ -47,18 +47,19 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-3 gap-3">
             {activityCards.map((card, i) => (
-              <motion.div
+              <motion.button
                 key={card.label}
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.08 }}
+                onClick={() => navigate(`/workouts?category=${card.filter}`)}
                 className="p-4 rounded-2xl bg-card card-shadow flex flex-col items-center gap-2 group hover:bg-primary/10 transition-colors"
               >
                 <div className="w-10 h-10 rounded-xl bg-primary/15 flex items-center justify-center">
                   <card.icon className="w-5 h-5 text-primary" />
                 </div>
                 <span className="text-[11px] font-semibold text-muted-foreground">{card.label}</span>
-              </motion.div>
+              </motion.button>
             ))}
           </div>
         </section>
