@@ -1,6 +1,8 @@
+import { useState } from "react";
 import { Settings, ChevronRight, Crown, Moon, LogOut, HelpCircle, Shield, Mail } from "lucide-react";
 import { motion } from "framer-motion";
 import { toast } from "sonner";
+import { PremiumDialog } from "@/components/PremiumDialog";
 import imgHero from "@/assets/hero-home.jpg";
 
 const stats = [
@@ -9,16 +11,20 @@ const stats = [
   { label: "Level", value: "Intermediate" },
 ];
 
-const menuItems = [
-  { icon: Crown, label: "Go Premium", subtitle: "Unlock advanced features", accent: true, action: () => toast("Premium coming soon! 🚀") },
-  { icon: Settings, label: "Preferences", subtitle: "Level, goals, equipment", action: () => toast("Preferences coming soon ⚙️") },
-  { icon: Moon, label: "Appearance", subtitle: "Light / Dark / System", action: () => { document.documentElement.classList.toggle("dark"); toast("Theme toggled 🌓"); } },
-  { icon: HelpCircle, label: "Help & FAQ", subtitle: "Get support", action: () => toast("Help center coming soon 📖") },
-  { icon: Shield, label: "Privacy & Terms", subtitle: "Legal information", action: () => toast("Privacy & Terms coming soon 🔒") },
-  { icon: Mail, label: "Contact Us", subtitle: "Send feedback", action: () => toast("Contact form coming soon ✉️") },
-];
+// menuItems moved inside component to access setPremiumOpen
 
 export default function Profile() {
+  const [premiumOpen, setPremiumOpen] = useState(false);
+
+  const menuItems = [
+    { icon: Crown, label: "Go Premium", subtitle: "Unlock advanced features", accent: true, action: () => setPremiumOpen(true) },
+    { icon: Settings, label: "Preferences", subtitle: "Level, goals, equipment", action: () => toast("Preferences coming soon ⚙️") },
+    { icon: Moon, label: "Appearance", subtitle: "Light / Dark / System", action: () => { document.documentElement.classList.toggle("dark"); toast("Theme toggled 🌓"); } },
+    { icon: HelpCircle, label: "Help & FAQ", subtitle: "Get support", action: () => toast("Help center coming soon 📖") },
+    { icon: Shield, label: "Privacy & Terms", subtitle: "Legal information", action: () => toast("Privacy & Terms coming soon 🔒") },
+    { icon: Mail, label: "Contact Us", subtitle: "Send feedback", action: () => toast("Contact form coming soon ✉️") },
+  ];
+
   return (
     <div className="px-5 pt-6 safe-top">
       <div className="flex items-center justify-between">
@@ -106,6 +112,8 @@ export default function Profile() {
       <button onClick={() => toast("Logged out successfully 👋")} className="w-full flex items-center justify-center gap-2 mt-6 py-3 text-destructive text-sm font-semibold">
         <LogOut className="w-4 h-4" /> Log Out
       </button>
+
+      <PremiumDialog open={premiumOpen} onOpenChange={setPremiumOpen} />
     </div>
   );
 }

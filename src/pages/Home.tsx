@@ -1,9 +1,11 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Play, Crown, ArrowRight, Search, Flame, Activity, Dumbbell, Sparkles } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { workouts } from "@/data/workouts";
 import { exercises } from "@/data/exercises";
 import { WorkoutCard } from "@/components/WorkoutCard";
+import { PremiumDialog } from "@/components/PremiumDialog";
 import heroImg from "@/assets/hero-home.jpg";
 
 const activityCards = [
@@ -14,6 +16,7 @@ const activityCards = [
 
 export default function Home() {
   const navigate = useNavigate();
+  const [premiumOpen, setPremiumOpen] = useState(false);
   const featured = workouts.filter((w) => w.featured);
   const exerciseOfDay = exercises[4]; // Handstand
 
@@ -139,11 +142,13 @@ export default function Home() {
           <p className="text-sm text-muted-foreground mt-1">
             Unlock advanced tips, unlimited plans, and exclusive skill programs.
           </p>
-          <button className="mt-3 px-5 py-2 rounded-full bg-primary text-primary-foreground text-sm font-semibold">
+          <button onClick={() => setPremiumOpen(true)} className="mt-3 px-5 py-2 rounded-full bg-primary text-primary-foreground text-sm font-semibold">
             Try Free for 7 Days
           </button>
         </motion.section>
       </div>
+
+      <PremiumDialog open={premiumOpen} onOpenChange={setPremiumOpen} />
     </div>
   );
 }
