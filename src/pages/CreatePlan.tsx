@@ -404,11 +404,11 @@ export default function CreatePlan() {
       </AnimatePresence>
 
       {/* Bottom action */}
-      <div className="fixed bottom-0 left-0 right-0 p-5 bg-gradient-to-t from-background via-background to-transparent safe-bottom">
+      <div className="fixed bottom-0 left-0 right-0 p-5 bg-gradient-to-t from-background via-background to-transparent safe-bottom flex justify-center">
         <button
           onClick={currentStep === "review" ? handleFinish : goNext}
           disabled={!canProceed()}
-          className={`w-full py-4 rounded-2xl font-display font-bold text-sm transition-all ${
+          className={`max-w-xs w-full py-4 rounded-2xl font-display font-bold text-sm transition-all ${
             canProceed()
               ? "bg-primary text-primary-foreground"
               : "bg-muted text-muted-foreground"
