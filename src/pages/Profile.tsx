@@ -29,7 +29,7 @@ export default function Profile() {
     <div className="px-5 pt-6 safe-top">
       <div className="flex items-center justify-between">
         <h1 className="text-2xl font-display font-bold">Profile</h1>
-        <button className="w-10 h-10 rounded-full bg-card card-shadow flex items-center justify-center">
+        <button onClick={() => toast("Preferences coming soon ⚙️")} className="w-10 h-10 rounded-full bg-card card-shadow flex items-center justify-center">
           <Settings className="w-5 h-5 text-muted-foreground" />
         </button>
       </div>
